@@ -29,9 +29,3 @@ require('config.fugitive')
 
 -- Treesitter configs
 require('treesitter')
-
--- NvimTree config
-require('plugins-config.nvim-tree')
-
--- barbar config
-require('plugins-config.barbar')
