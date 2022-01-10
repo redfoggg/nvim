@@ -15,7 +15,7 @@ return require('packer').startup(function()
   -- CoC
   use {'neoclide/coc.nvim', branch = 'release'}
 
-  -- Omnisharp
+  -- Omnisharp - c# actions and functions
   use {'OmniSharp/omnisharp-vim'}
 
   -- Ale
@@ -37,9 +37,16 @@ return require('packer').startup(function()
         'kyazdani42/nvim-web-devicons' -- optional, for file icon
       },
       config = function() require'nvim-tree'.setup{} end
-   }
+  }
 
-  -- Barbar
+  -- Lualine - status line
+  use {
+      'nvim-lualine/lualine.nvim',
+       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+       config = function() require'lualine'.setup{} end
+  }
+
+  -- Barbar - buffer manager
   use {
       'romgrk/barbar.nvim',
       requires = {'kyazdani42/nvim-web-devicons'}
