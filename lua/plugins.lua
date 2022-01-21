@@ -5,11 +5,25 @@ return require('packer').startup(function()
 
   -- Color scheme
   use { 'sainnhe/gruvbox-material' }
+  use { 'joshdick/onedark.vim' }
+  use { 'eddyekofo94/gruvbox-flat.nvim' }
+
+  -- Readme preview
+  use {
+      'iamcco/markdown-preview.nvim',
+      ft = 'markdown',
+      run = 'cd app && yarn install'
+    }
 
   -- Fuzzy finder
   use {
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {'nvim-lua/plenary.nvim'},
+    config = function() require('gitsigns').setup() end
   }
 
   -- CoC
@@ -43,7 +57,7 @@ return require('packer').startup(function()
   use {
       'nvim-lualine/lualine.nvim',
        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
-       config = function() require'lualine'.setup{} end
+       config = function() require'lualine'.setup{ options = { theme = 'gruvbox-flat' }} end
   }
 
   -- Barbar - buffer manager
