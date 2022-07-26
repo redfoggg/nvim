@@ -18,14 +18,13 @@ require('keymappings')
 
 -- Config groups
 require('config.colorscheme')
-require('config.completion')
 require('config.fugitive')
 
 -- Treesitter configs
 require('treesitter')
 
--- Plugins config
-require('coc')
+-- LspConfig
+require('lsp')
 
 vim.cmd([[
 au! BufNewFile,BufRead *.axaml setf xml
