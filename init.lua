@@ -26,3 +26,7 @@ require('treesitter')
 
 -- Plugins config
 require('coc')
+
+vim.cmd([[
+au! BufNewFile,BufRead *.axaml setf xml
+]])

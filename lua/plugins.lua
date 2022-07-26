@@ -65,14 +65,39 @@ return require('packer').startup(function()
       'romgrk/barbar.nvim',
       requires = {'kyazdani42/nvim-web-devicons'}
   }
+
+  use {
+      'nvim-lua/plenary.nvim'
+  }
+
+  use {
+    "nvim-neorg/neorg",
+    after = "nvim-treesitter",
+    config = function()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {},
+                ["core.norg.dirman"] = {
+                    config = {
+                        workspaces = {
+                            work = "~/notes/work",
+                            home = "~/notes/home",
+                        }
+                    }
+                },
+                ["core.gtd.base"] = { 
+                    config = { workspace = "home" }
+                },
+                ["core.norg.concealer"] = {}
+            }
+        }
+    end,
+    requires = "nvim-lua/plenary.nvim"
+  }
   
   -- Elixir syntax
   use { 'elixir-editors/vim-elixir' }
 
-  -- Start screen
-  use {
-      'mhinz/vim-startify'
-  }
   
   -- Vimspector - debugger for vim/nvim
   use {
