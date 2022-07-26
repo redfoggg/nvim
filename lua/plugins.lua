@@ -20,6 +20,8 @@ return require('packer').startup(function()
       'nvim-telescope/telescope.nvim',
       requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
+
+  -- Git
   use {
     'lewis6991/gitsigns.nvim',
     requires = {'nvim-lua/plenary.nvim'},
@@ -69,14 +71,45 @@ return require('packer').startup(function()
   -- Elixir syntax
   use { 'elixir-editors/vim-elixir' }
 
-  -- Start screen
-  use {
-      'mhinz/vim-startify'
-  }
+  -- Start screen / currently without it
   
   -- Vimspector - debugger for vim/nvim
   use {
       'puremourning/vimspector'
+  }
+
+  -- Neorg - Neovim org mode
+  use {
+    "nvim-neorg/neorg",
+    after = "nvim-treesitter",
+    config = function()
+        require('neorg').setup{
+            load = {
+                ["core.defaults"] = {},
+                ["core.norg.dirman"] = {
+                    config = {
+                        workspaces = {
+                            work = "~/notes/work",
+                            home = "~/notes/home",
+                        }
+                    }
+                },
+                ["core.norg.concealer"] = {},
+                ["core.gtd.base"] = {
+                    config = {
+                        workspace = "work",
+                        displayers = {
+                            projects = {
+                                show_completed_projects = true,
+                                show_projects_without_tasks = true
+                            }
+                        }
+                    }
+                },
+            }
+        }
+    end,
+    requires = "nvim-lua/plenary.nvim"
   }
 
 end)

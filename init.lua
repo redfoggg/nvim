@@ -26,3 +26,8 @@ require('treesitter')
 
 -- Plugins config
 require('coc')
+
+-- Custom FileTypes
+vim.cmd([[
+autocmd BufNewFile,BufRead *.axaml set filetype=xml
+]])
