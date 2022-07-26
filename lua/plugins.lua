@@ -26,11 +26,31 @@ return require('packer').startup(function()
     config = function() require('gitsigns').setup() end
   }
 
-  -- CoC
-  use {'neoclide/coc.nvim', branch = 'release'}
+  -- LspExtensions
+  use { 
+      'Decodetalkers/csharpls-extended-lsp.nvim'
+  }
+  use { 'onsails/lspkind-nvim' }
 
-  -- Omnisharp - c# actions and functions
-  use {'OmniSharp/omnisharp-vim'}
+  -- LspCompletion
+  use { 'hrsh7th/cmp-nvim-lsp' }
+  use { 'hrsh7th/cmp-buffer' }
+  use { 'hrsh7th/nvim-cmp' }
+  use { 'hrsh7th/cmp-path' }
+  use { 'L3MON4D3/LuaSnip' }
+  use { 'saadparwaiz1/cmp_luasnip' }
+  use { "rafamadriz/friendly-snippets" }
+
+  -- LspManager
+  use { 
+    'williamboman/mason.nvim',
+    config = function() require("mason").setup{} end 
+  }
+  
+  -- LspConfig
+  use { 
+   'neovim/nvim-lspconfig'
+  }
 
   -- Ale
   use { 'dense-analysis/ale' }
@@ -65,13 +85,34 @@ return require('packer').startup(function()
       'romgrk/barbar.nvim',
       requires = {'kyazdani42/nvim-web-devicons'}
   }
-  
-  -- Elixir syntax
-  use { 'elixir-editors/vim-elixir' }
 
-  -- Start screen
   use {
-      'mhinz/vim-startify'
+      'nvim-lua/plenary.nvim'
+  }
+
+  use {
+    "nvim-neorg/neorg",
+    after = "nvim-treesitter",
+    config = function()
+        require('neorg').setup {
+            load = {
+                ["core.defaults"] = {},
+                ["core.norg.dirman"] = {
+                    config = {
+                        workspaces = {
+                            work = "~/notes/work",
+                            home = "~/notes/home",
+                        }
+                    }
+                },
+                ["core.gtd.base"] = { 
+                    config = { workspace = "home" }
+                },
+                ["core.norg.concealer"] = {}
+            }
+        }
+    end,
+    requires = "nvim-lua/plenary.nvim"
   }
   
   -- Vimspector - debugger for vim/nvim
