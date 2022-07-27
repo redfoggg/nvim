@@ -27,9 +27,7 @@ return require('packer').startup(function()
   }
 
   -- LspExtensions
-  use { 
-      'Decodetalkers/csharpls-extended-lsp.nvim'
-  }
+  use { 'Hoffs/omnisharp-extended-lsp.nvim' }
   use { 'onsails/lspkind-nvim' }
 
   -- LspCompletion
@@ -44,16 +42,15 @@ return require('packer').startup(function()
   -- LspManager
   use { 
     'williamboman/mason.nvim',
-    config = function() require("mason").setup{} end 
+    "williamboman/mason-lspconfig.nvim",
+    config = function() 
+        require("mason").setup{}
+        require("mason-lspconfig").setup{}
+    end 
   }
   
   -- LspConfig
-  use { 
-   'neovim/nvim-lspconfig'
-  }
-
-  -- Ale
-  use { 'dense-analysis/ale' }
+  use { 'neovim/nvim-lspconfig' }
 
   -- Vim dispatch
   use { 'tpope/vim-dispatch' }
