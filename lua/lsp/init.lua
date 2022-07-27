@@ -37,14 +37,22 @@ end
 
 
 -- Specific languages config
-require('lspconfig')['csharp_ls'].setup{
+
+-- Csharp
+
+local omnisharp_bin = '/usr/local/bin/omnisharp-roslyn/OmniSharp'
+local pid = vim.fn.getpid()
+require('lspconfig')['omnisharp'].setup{
     capabilities = capabilites,
+    cmd = { omnisharp_bin, '--languageserver' , '--hostPID', tostring(pid) },
     on_attach = on_attach,
     flags = lsp_flags,
     handlers = {
-        ["textDocument/definition"] = require('csharpls_extended').handler
-    }
+        ["textDocument/definition"] = require('omnisharp_extended').handler
+    },
 }
+
+-- rust
 require('lspconfig')['rust_analyzer'].setup{
     on_attach = on_attach,
     flags = lsp_flags
@@ -54,9 +62,10 @@ require('lspconfig')['rust_analyzer'].setup{
 
 
 -- Setup nvim-cmp.
+
 vim.opt.completeopt= { "menu", "menuone", "noselect" }
 
--- Icons
+-- Icons for nvim-cmp
 local ok, lspkind = pcall(require, "lspkind")
 if not ok then
   return
