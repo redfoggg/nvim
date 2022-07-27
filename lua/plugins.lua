@@ -15,6 +15,22 @@ return require('packer').startup(function()
       run = 'cd app && yarn install'
     }
 
+  -- Surround
+  use({
+      "kylechui/nvim-surround",
+      config = function()
+          require("nvim-surround").setup()
+      end
+  })
+
+  -- Nvim-commenter
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
+
   -- Fuzzy finder
   use {
       'nvim-telescope/telescope.nvim',
@@ -51,9 +67,6 @@ return require('packer').startup(function()
   use { 
    'neovim/nvim-lspconfig'
   }
-
-  -- Ale
-  use { 'dense-analysis/ale' }
 
   -- Vim dispatch
   use { 'tpope/vim-dispatch' }
