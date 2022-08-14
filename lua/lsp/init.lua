@@ -1,6 +1,11 @@
 -- nvim.cmp capabilities
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
+
+-- LspManager
+require("mason").setup()
+require("mason-lspconfig").setup()
+
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -31,16 +36,19 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<CR>', bufopts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
 
 -- Specific languages config
 
+-- Json
+require('lspconfig')['jsonls'].setup{}
+
 -- Csharp
 
-local omnisharp_bin = '/usr/local/bin/omnisharp-roslyn/OmniSharp'
+local omnisharp_bin = 'os.getenv("HOME")/.local/share/nvim/mason/bin/omnisharp'
 local pid = vim.fn.getpid()
 require('lspconfig')['omnisharp'].setup{
     capabilities = capabilites,
@@ -62,7 +70,6 @@ require('lspconfig')['rust_analyzer'].setup{
 
 
 -- Setup nvim-cmp.
-
 vim.opt.completeopt= { "menu", "menuone", "noselect" }
 
 -- Icons for nvim-cmp
@@ -91,9 +98,9 @@ cmp.setup({
     }),
     sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'luasnip' }, -- For luasnip users.
-    }, {
-        { name = 'buffer' },
+        { name = 'luasnip' },
+        { name = 'buffer', keyword_length = 5 },
+        { name = 'path' },
     }),
     formatting = {
         -- Youtube: How to set up nice formatting for your sources.

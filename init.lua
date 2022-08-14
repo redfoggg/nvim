@@ -26,6 +26,9 @@ require('treesitter')
 -- LspConfig
 require('lsp')
 
+-- Dap
+-- require('dap')
+
 vim.cmd([[
 au! BufNewFile,BufRead *.axaml setf xml
 ]])

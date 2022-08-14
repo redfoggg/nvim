@@ -56,15 +56,9 @@ return require('packer').startup(function()
   use { "rafamadriz/friendly-snippets" }
 
   -- LspManager
-  use { 
-    'williamboman/mason.nvim',
-    "williamboman/mason-lspconfig.nvim",
-    config = function() 
-        require("mason").setup{}
-        require("mason-lspconfig").setup{}
-    end 
-  }
-  
+  use { 'williamboman/mason.nvim' }
+  use { 'williamboman/mason-lspconfig.nvim' }
+
   -- LspConfig
   use { 'neovim/nvim-lspconfig' }
 
@@ -78,15 +72,6 @@ return require('packer').startup(function()
   -- Treesitter
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   
-  -- File explorer
-  use {
-      'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons' -- optional, for file icon
-      },
-      config = function() require'nvim-tree'.setup{} end
-  }
-
   -- Lualine - status line
   use {
       'nvim-lualine/lualine.nvim',
@@ -111,6 +96,12 @@ return require('packer').startup(function()
         require('neorg').setup {
             load = {
                 ["core.defaults"] = {},
+                ["core.keybinds"] = {
+                    config = { 
+                        default_keybinds = true,
+                        neorg_leader = "<Leader>n"
+                    }
+                },
                 ["core.norg.dirman"] = {
                     config = {
                         workspaces = {
@@ -129,9 +120,13 @@ return require('packer').startup(function()
     requires = "nvim-lua/plenary.nvim"
   }
   
-  -- Vimspector - debugger for vim/nvim
-  use {
-      'puremourning/vimspector'
-  }
+  -- debugger for nvim
+  use { 'puremourning/vimspector' }
+
+  -- TODO: Make it work with nvim-dap
+  --[[ use { "mfussenegger/nvim-dap" }
+  use { "theHamsta/nvim-dap-virtual-text" }
+  use { "nvim-telescope/telescope-dap.nvim" }
+  use { "rcarriga/nvim-dap-ui" } ]]
 
 end)
