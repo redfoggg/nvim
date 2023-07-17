@@ -75,50 +75,52 @@ return require('packer').startup(function()
   -- Lualine - status line
   use {
       'nvim-lualine/lualine.nvim',
-       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+       requires = { 'nvim-tree/nvim-web-devicons', opt = true },
        config = function() require'lualine'.setup{ options = { theme = 'gruvbox-flat' }} end
   }
+
+  use 'nvim-tree/nvim-web-devicons'
 
   -- Barbar - buffer manager
   use {
       'romgrk/barbar.nvim',
-      requires = {'kyazdani42/nvim-web-devicons'}
+      wants = {'nvim-tree/nvim-web-devicons'}
   }
 
   use {
       'nvim-lua/plenary.nvim'
   }
 
-  use {
-    "nvim-neorg/neorg",
-    after = "nvim-treesitter",
-    config = function()
-        require('neorg').setup {
-            load = {
-                ["core.defaults"] = {},
-                ["core.keybinds"] = {
-                    config = { 
-                        default_keybinds = true,
-                        neorg_leader = "<Leader>n"
-                    }
-                },
-                ["core.norg.dirman"] = {
-                    config = {
-                        workspaces = {
-                            work = "~/notes/work",
-                            home = "~/notes/home",
-                        }
-                    }
-                },
-                ["core.gtd.base"] = { 
-                    config = { workspace = "home" }
-                },
-                ["core.norg.concealer"] = {}
-            }
-        }
-    end,
-    requires = "nvim-lua/plenary.nvim"
-  }
+  -- use {
+  --   "nvim-neorg/neorg",
+  --   after = "nvim-treesitter",
+  --   config = function()
+  --       require('neorg').setup {
+  --           load = {
+  --               ["core.defaults"] = {},
+  --               ["core.keybinds"] = {
+  --                   config = { 
+  --                       default_keybinds = true,
+  --                       neorg_leader = "<Leader>n"
+  --                   }
+  --               },
+  --               ["core.norg.dirman"] = {
+  --                   config = {
+  --                       workspaces = {
+  --                           work = "~/notes/work",
+  --                           home = "~/notes/home",
+  --                       }
+  --                   }
+  --               },
+  --               ["core.gtd.base"] = { 
+  --                   config = { workspace = "home" }
+  --               },
+  --               ["core.norg.concealer"] = {}
+  --           }
+  --       }
+  --   end,
+  --   requires = "nvim-lua/plenary.nvim"
+  -- }
   
   -- debugger for nvim
   use { 'puremourning/vimspector' }
