@@ -78,6 +78,7 @@ return require('packer').startup(function(use)
   use("laytan/cloak.nvim")
 
   use { 'Decodetalkers/csharpls-extended-lsp.nvim' }
+  use { 'Hoffs/omnisharp-extended-lsp.nvim' }
 
 end)
 
