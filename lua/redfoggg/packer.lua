@@ -21,6 +21,8 @@ return require('packer').startup(function(use)
 	  end
   })
 
+  use { 'eddyekofo94/gruvbox-flat.nvim' }
+
   use({
       "folke/trouble.nvim",
       config = function()
@@ -38,7 +40,8 @@ return require('packer').startup(function(use)
 			run = function()
 				local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 				ts_update()
-			end,}
+            end,
+  }
   use("nvim-treesitter/playground")
   use("theprimeagen/harpoon")
   use("theprimeagen/refactoring.nvim")
@@ -73,6 +76,8 @@ return require('packer').startup(function(use)
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
+
+  use { 'Hoffs/omnisharp-extended-lsp.nvim' }
 
 end)
 
