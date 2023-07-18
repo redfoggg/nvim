@@ -5,7 +5,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
-  'csharp_ls',
+  'omnisharp',
   'lua_ls'
 })
 
@@ -21,10 +21,10 @@ lsp.set_server_config({
 
 local dotnetConfig = {
   handlers = {
-    ["textDocument/definition"] = require('csharpls_extended').handler
+    ["textDocument/definition"] = require('omnisharp_extended').handler
   }
 }
-require('lspconfig').csharp_ls.setup(dotnetConfig)
+require('lspconfig').omnisharp.setup(dotnetConfig)
 
 
 local cmp = require('cmp')
@@ -56,7 +56,16 @@ lsp.set_preferences({
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
 
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  -- por algum motivo é necessário chamar desta forma para que funcione
+  -- a config do handler não funciona com o lsp-zero como funcionava
+  -- com o lsp-config, preguiça de olhar o que é agora, quem sabe daqui a
+  -- alguns anos
+  if client.name == "omnisharp" then
+      vim.keymap.set("n", "gd", function() require('omnisharp_extended').lsp_definitions() end, opts)
+  else
+      vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  end
+
   vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
