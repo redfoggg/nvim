@@ -77,7 +77,7 @@ return require('packer').startup(function(use)
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
 
-  use { 'Hoffs/omnisharp-extended-lsp.nvim' }
+  use { 'Decodetalkers/csharpls-extended-lsp.nvim' }
 
 end)
 

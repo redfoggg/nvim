@@ -5,7 +5,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'tsserver',
   'rust_analyzer',
-  'omnisharp',
+  'csharp_ls',
   'lua_ls'
 })
 
@@ -19,15 +19,12 @@ lsp.set_server_config({
     end,
 })
 
-local omnisharp_bin = os.getenv("HOME") .. '/.local/share/nvim/mason/bin/omnisharp'
-local pid = vim.fn.getpid()
 local dotnetConfig = {
   handlers = {
-    ["textDocument/definition"] = require('omnisharp_extended').handler
-  },
-  cmd = { omnisharp_bin, '--languageserver' , '--hostPID', tostring(pid) },
+    ["textDocument/definition"] = require('csharpls_extended').handler
+  }
 }
-require('lspconfig').omnisharp.setup(dotnetConfig)
+require('lspconfig').csharp_ls.setup(dotnetConfig)
 
 
 local cmp = require('cmp')
