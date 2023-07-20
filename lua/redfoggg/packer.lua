@@ -8,6 +8,11 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
+    'lewis6991/gitsigns.nvim',
+    requires = {'nvim-lua/plenary.nvim'}
+  }
+
+  use {
 	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
 	  -- or                            , branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
@@ -22,6 +27,9 @@ return require('packer').startup(function(use)
   })
 
   use { 'eddyekofo94/gruvbox-flat.nvim' }
+
+  use { 'mfussenegger/nvim-dap' }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
   use({
       "folke/trouble.nvim",
@@ -77,8 +85,8 @@ return require('packer').startup(function(use)
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
 
-  use { 'Decodetalkers/csharpls-extended-lsp.nvim' }
   use { 'Hoffs/omnisharp-extended-lsp.nvim' }
+  --use { 'puremourning/vimspector' }
 
 end)
 
