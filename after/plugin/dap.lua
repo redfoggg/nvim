@@ -6,11 +6,11 @@ dapui.setup()
 -- para trabalhar com .vscode/launch.json
 require('dap.ext.vscode').load_launchjs(nil, { coreclr = { 'cs' } })
 
-dap.adapters.coreclr = {
-    type = 'executable',
-    command = os.getenv("HOME") .. '/.local/share/nvim/mason/bin/netcoredbg',
-    args = { '--interpreter=vscode' }
-}
+--dap.adapters.coreclr = {
+--    type = 'executable',
+--    command = os.getenv("HOME") .. '/.local/share/nvim/mason/bin/netcoredbg',
+--    args = { '--interpreter=vscode' }
+--}
 
 -- só necessário se não tiver um .vscode/launch.json
 --dap.configurations.cs = {
