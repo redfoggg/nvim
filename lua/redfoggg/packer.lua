@@ -21,6 +21,8 @@ return require('packer').startup(function(use)
 
     use { 'numToStr/Comment.nvim' }
 
+    use { 'tpope/vim-surround' }
+
     use {
         "nvim-neotest/neotest",
         requires = {
