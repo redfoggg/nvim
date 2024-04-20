@@ -32,4 +32,4 @@ vim.opt.cursorline = true
 --vim.g.vimspector_enable_mappings = 'HUMAN'
 -- Se quiser ter uma um limite visual em sua tela para não passar o código
 -- deste limite
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"

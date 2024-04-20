@@ -5,6 +5,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'rust_analyzer',
   'omnisharp',
+  'clojure_lsp',
   'lua_ls'
 })
 

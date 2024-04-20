@@ -12,6 +12,8 @@ return require('packer').startup(function(use)
         requires = { 'nvim-lua/plenary.nvim' }
     }
 
+    use { 'Olical/conjure' }
+
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
         requires = { { 'nvim-lua/plenary.nvim' } }
@@ -91,5 +93,4 @@ return require('packer').startup(function(use)
     use("laytan/cloak.nvim")
 
     use { 'Hoffs/omnisharp-extended-lsp.nvim' }
-    --use { 'puremourning/vimspector' }
 end)
