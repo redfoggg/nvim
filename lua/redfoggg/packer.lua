@@ -13,6 +13,9 @@ return require('packer').startup(function(use)
     }
 
     use { 'Olical/conjure' }
+    use { 'tpope/vim-sexp-mappings-for-regular-people' }
+    use { 'guns/vim-sexp' }
+    use { 'clojure-vim/vim-jack-in', requires = { 'radenling/vim-dispatch-neovim' } }
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -87,9 +90,6 @@ return require('packer').startup(function(use)
         }
     }
 
-    use("folke/zen-mode.nvim")
-    use("github/copilot.vim")
-    use("eandrju/cellular-automaton.nvim")
     use("laytan/cloak.nvim")
 
     use { 'Hoffs/omnisharp-extended-lsp.nvim' }
