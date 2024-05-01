@@ -93,4 +93,8 @@ return require('packer').startup(function(use)
     use("laytan/cloak.nvim")
 
     use { 'Hoffs/omnisharp-extended-lsp.nvim' }
+
+    use { 'HiPhish/rainbow-delimiters.nvim' }
+
+    use { 'folke/lsp-colors.nvim' }
 end)
