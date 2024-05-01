@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
     use { 'tpope/vim-sexp-mappings-for-regular-people' }
     use { 'guns/vim-sexp' }
     use { 'clojure-vim/vim-jack-in', requires = { 'radenling/vim-dispatch-neovim' } }
+    use { 'tpope/vim-dispatch' }
 
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -95,4 +96,11 @@ return require('packer').startup(function(use)
     use { 'Hoffs/omnisharp-extended-lsp.nvim' }
 
     use { 'HiPhish/rainbow-delimiters.nvim' }
+
+    use {
+        "nvim-neorg/neorg",
+        rocks = { "lua-utils.nvim", "nvim-nio", "nui.nvim", "plenary.nvim", "pathlib.nvim" },
+        tag = "*", -- Pin Neorg to the latest stable release
+    }
+
 end)
