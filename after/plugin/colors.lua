@@ -8,3 +8,4 @@ function ColorMyPencils(color)
 end
 
 ColorMyPencils()
+vim.cmd('highlight SignColumn guibg=NONE') -- desativa background na barra de ícones
