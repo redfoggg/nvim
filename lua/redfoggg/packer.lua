@@ -65,7 +65,6 @@ return require('packer').startup(function(use)
     use("theprimeagen/harpoon")
     use("theprimeagen/refactoring.nvim")
     use("mbbill/undotree")
-    use("tpope/vim-fugitive")
     use("nvim-treesitter/nvim-treesitter-context");
 
     use {
@@ -97,10 +96,6 @@ return require('packer').startup(function(use)
 
     use { 'HiPhish/rainbow-delimiters.nvim' }
 
-    use {
-        "nvim-neorg/neorg",
-        rocks = { "lua-utils.nvim", "nvim-nio", "nui.nvim", "plenary.nvim", "pathlib.nvim" },
-        tag = "*", -- Pin Neorg to the latest stable release
-    }
+    use { 'nvim-tree/nvim-web-devicons' }
 
 end)
