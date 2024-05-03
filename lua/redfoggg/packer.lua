@@ -98,4 +98,7 @@ return require('packer').startup(function(use)
 
     use { 'nvim-tree/nvim-web-devicons' }
 
+    use { 'echasnovski/mini.indentscope' }
+
+    use { 'nvim-lualine/lualine.nvim' }
 end)
