@@ -101,4 +101,6 @@ return require('packer').startup(function(use)
     use { 'echasnovski/mini.indentscope' }
 
     use { 'nvim-lualine/lualine.nvim' }
+
+    use "lukas-reineke/indent-blankline.nvim"
 end)
