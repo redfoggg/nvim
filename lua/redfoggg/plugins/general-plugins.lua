@@ -24,7 +24,12 @@ return {
     "theprimeagen/refactoring.nvim",
     "laytan/cloak.nvim",
     "HiPhish/rainbow-delimiters.nvim",
-    "nvim-lualine/lualine.nvim",
+    {
+        "nvim-lualine/lualine.nvim",
+        config = function()
+            require('lualine').setup()
+        end
+    },
     "lukas-reineke/indent-blankline.nvim",
     {
         "eddyekofo94/gruvbox-flat.nvim",
