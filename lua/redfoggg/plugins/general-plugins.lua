@@ -2,6 +2,7 @@ return {
     "Olical/conjure",
     "tpope/vim-sexp-mappings-for-regular-people",
     "tpope/vim-surround",
+    "tpope/vim-dispatch",
     "guns/vim-sexp",
     "numToStr/Comment.nvim",
     {
@@ -29,6 +30,7 @@ return {
         "eddyekofo94/gruvbox-flat.nvim",
         lazy = false,
         priority = 1000,
+        name = "gruvbox-flat",
         config = function()
             function ColorMyPencils(color)
                 color = color or "gruvbox-flat"

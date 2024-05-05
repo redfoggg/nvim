@@ -1,3 +1,3 @@
 require("redfoggg.set")
 require("redfoggg.remap")
-require("redfoggg.lazy")
+require("redfoggg.lazy_init")
