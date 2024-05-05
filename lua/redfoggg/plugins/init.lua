@@ -1,7 +1,2 @@
--- require("redfoggg.plugins.harpoon")
--- require("redfoggg.plugins.lsp")
--- require("redfoggg.plugins.nvim-web-devicons")
--- require("redfoggg.plugins.general-plugins")
--- require("redfoggg.plugins.telescope")
--- require("redfoggg.plugins.treesitter")
--- require("redfoggg.plugins.trouble")
+return {
+}
