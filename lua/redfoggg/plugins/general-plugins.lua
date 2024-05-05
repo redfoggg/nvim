@@ -1,5 +1,10 @@
 return {
-    "Olical/conjure",
+    {
+        "Olical/conjure",
+        config = function()
+            vim.g["conjure#mapping#doc_word"] = false
+        end
+    },
     "tpope/vim-sexp-mappings-for-regular-people",
     "tpope/vim-surround",
     "tpope/vim-dispatch",
