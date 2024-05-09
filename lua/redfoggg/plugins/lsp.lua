@@ -19,21 +19,16 @@ return {
             -- Snippets
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
+            "saadparwaiz1/cmp_luasnip",
+
+            -- Só para ícones mesmo
+            "onsails/lspkind.nvim",
         },
         config = function()
             local lsp = require("lsp-zero")
+            local lspkind = require("lspkind")
 
             lsp.preset("recommended")
-
-            lsp.ensure_installed({
-                'rust_analyzer',
-                'omnisharp',
-                'clojure_lsp',
-                'lua_ls'
-            })
-
-            -- Fix Undefined global 'vim'
-            lsp.nvim_workspace()
 
             -- inlayhints para lsp que suportam
             vim.api.nvim_create_autocmd("LspAttach", {
@@ -73,18 +68,31 @@ return {
             cmp_mappings['<Tab>'] = nil
             cmp_mappings['<S-Tab>'] = nil
 
-            lsp.setup_nvim_cmp({
-                mapping = cmp_mappings
+            cmp.setup({
+                mapping = cmp_mappings,
+                sources = cmp.config.sources({
+                        { name = "nvim_lsp" },
+                        { name = "luasnip" }
+                    },
+                    {
+                        { name = "buffer" }
+                    }
+                ),
+                formatting = {
+                    format = lspkind.cmp_format({
+                        mode = 'symbol',
+                        maxwidth = 50,
+                        ellipsis_char = '...',
+                        show_labelDetails = true,
+                    })
+                },
             })
 
-            lsp.set_preferences({
-                suggest_lsp_servers = false,
-                sign_icons = {
-                    error = '',
-                    warn = '',
-                    hint = '',
-                    info = ''
-                }
+            lsp.set_sign_icons({
+                error = '',
+                warn = '',
+                hint = '',
+                info = ''
             })
 
             lsp.on_attach(function(client, bufnr)
@@ -115,9 +123,35 @@ return {
 
             lsp.setup()
 
-            require("lspconfig").gleam.setup({})
-
             vim.diagnostic.config({ virtual_text = true })
+
+            require('mason').setup({})
+            require('mason-lspconfig').setup({
+                ensure_installed = {
+                    'rust_analyzer',
+                    'omnisharp',
+                    'clojure_lsp',
+                    'lua_ls'
+                },
+                handlers = {
+                    function(server_name)
+                        require('lspconfig')[server_name].setup({})
+                    end,
+                    ["lua_ls"] = function()
+                        local lspconfig = require("lspconfig")
+                        lspconfig.lua_ls.setup {
+                            settings = {
+                                Lua = {
+                                    runtime = { version = "Lua 5.1" },
+                                    diagnostics = {
+                                        globals = { "vim", "it", "describe", "before_each", "after_each" },
+                                    }
+                                }
+                            }
+                        }
+                    end,
+                },
+            })
         end,
     },
 }
