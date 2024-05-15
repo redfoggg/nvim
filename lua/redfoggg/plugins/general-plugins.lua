@@ -78,6 +78,7 @@ return {
         version = false,
         config = function()
             require('mini.files').setup()
+            require('mini.pairs').setup()
         end,
         keys = {
             { "<leader>pv", "<cmd>lua MiniFiles.open()<cr>", desc = "MiniFiles open tab buffer" }
