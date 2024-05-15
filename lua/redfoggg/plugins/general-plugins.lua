@@ -73,4 +73,14 @@ return {
             { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
         }
     },
+    {
+        'echasnovski/mini.nvim',
+        version = false,
+        config = function()
+            require('mini.files').setup()
+        end,
+        keys = {
+            { "<leader>pv", "<cmd>lua MiniFiles.open()<cr>", desc = "MiniFiles open tab buffer" }
+        },
+    },
 }
