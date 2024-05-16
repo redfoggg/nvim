@@ -8,6 +8,7 @@ return {
     "tpope/vim-sexp-mappings-for-regular-people",
     "tpope/vim-surround",
     "tpope/vim-dispatch",
+    "tpope/vim-repeat",
     "guns/vim-sexp",
     "numToStr/Comment.nvim",
     {
@@ -25,7 +26,6 @@ return {
     },
     "mbbill/undotree",
     "nvim-treesitter/nvim-treesitter-context",
-    "mbbill/undotree",
     "theprimeagen/refactoring.nvim",
     "laytan/cloak.nvim",
     "HiPhish/rainbow-delimiters.nvim",
