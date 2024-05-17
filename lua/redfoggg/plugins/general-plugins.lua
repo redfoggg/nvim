@@ -79,4 +79,14 @@ return {
             { "<leader>pv", "<cmd>lua MiniFiles.open()<cr>", desc = "MiniFiles open tab buffer" }
         },
     },
+    {
+        "jinh0/eyeliner.nvim",
+        config = function()
+            require 'eyeliner'.setup {
+                highlight_on_key = true,
+                dim = true,
+            }
+        end
+
+    }
 }
