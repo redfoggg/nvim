@@ -24,11 +24,6 @@ return {
             "nvim-neotest/nvim-nio"
         },
     },
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        config = true
-    },
     "mbbill/undotree",
     "nvim-treesitter/nvim-treesitter-context",
     "theprimeagen/refactoring.nvim",
