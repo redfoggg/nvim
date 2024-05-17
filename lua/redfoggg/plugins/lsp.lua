@@ -61,10 +61,18 @@ return {
             local cmp_mappings = lsp.defaults.cmp_mappings({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ['<C-y>'] = cmp.mapping(
+                    cmp.mapping.confirm {
+                        select = true,
+                        behavior = cmp.ConfirmBehavior.Insert
+                    },
+                    { "i", "c" }),
                 ["<C-Space>"] = cmp.mapping.complete(),
             })
 
+            -- TODO essa parte precisa ser removida para
+            -- reorganizar o completion fora do local onde
+            -- é organizado o lsp como está aqui tudo misturado
             cmp_mappings['<Tab>'] = nil
             cmp_mappings['<S-Tab>'] = nil
 
@@ -87,6 +95,24 @@ return {
                     })
                 },
             })
+
+            local ls = require "luasnip"
+            ls.config.set_config {
+                history = false,
+                updateevents = "TextChanged,TextChangedI",
+            }
+            vim.keymap.set({ "i", "s" }, "<c-k>", function()
+                if ls.expand_or_jumpable() then
+                    ls.expand_or_jump()
+                end
+            end, { silent = true })
+
+            vim.keymap.set({ "i", "s" }, "<c-j>", function()
+                if ls.jumpable(-1) then
+                    ls.jump(-1)
+                end
+            end, { silent = true })
+
 
             lsp.set_sign_icons({
                 error = '',

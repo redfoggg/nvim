@@ -24,6 +24,11 @@ return {
             "nvim-neotest/nvim-nio"
         },
     },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
     "mbbill/undotree",
     "nvim-treesitter/nvim-treesitter-context",
     "theprimeagen/refactoring.nvim",
@@ -37,24 +42,19 @@ return {
     },
     "lukas-reineke/indent-blankline.nvim",
     {
-        "eddyekofo94/gruvbox-flat.nvim",
-        lazy = false,
+        "catppuccin/nvim",
+        name = "catppuccin",
         priority = 1000,
-        name = "gruvbox-flat",
         config = function()
-            function ColorMyPencils(color)
-                color = color or "gruvbox-flat"
-                vim.cmd.colorscheme(color)
-                vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-                vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-            end
-
-            ColorMyPencils()
+            vim.cmd.colorscheme("catppuccin")
             vim.cmd('highlight SignColumn guibg=NONE') -- desativa background na barra de ícones
-        end,
+        end
     },
     {
         "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup()
+        end,
         dependencies = { "nvim-lua/plenary.nvim" }
     },
     {
