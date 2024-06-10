@@ -25,10 +25,10 @@ return {
             "onsails/lspkind.nvim",
         },
         config = function()
-            local lsp = require("lsp-zero")
+            local lsp_zero = require("lsp-zero")
             local lspkind = require("lspkind")
 
-            lsp.preset("recommended")
+            lsp_zero.preset("recommended")
 
             -- inlayhints para lsp que suportam
             -- vim.api.nvim_create_autocmd("LspAttach", {
@@ -42,7 +42,7 @@ return {
             -- })
 
 
-            lsp.set_server_config({
+            lsp_zero.set_server_config({
                 on_init = function(client)
                     client.server_capabilities.semanticTokensProvider = nil
                 end,
@@ -58,7 +58,7 @@ return {
 
             local cmp = require('cmp')
             local cmp_select = { behavior = cmp.SelectBehavior.Insert }
-            local cmp_mappings = lsp.defaults.cmp_mappings({
+            local cmp_mappings = lsp_zero.defaults.cmp_mappings({
                 ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
                 ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
                 ['<C-y>'] = cmp.mapping(
@@ -114,14 +114,14 @@ return {
             end, { silent = true })
 
 
-            lsp.set_sign_icons({
+            lsp_zero.set_sign_icons({
                 error = '',
                 warn = '',
                 hint = '',
                 info = ''
             })
 
-            lsp.on_attach(function(client, bufnr)
+            lsp_zero.on_attach(function(client, bufnr)
                 local opts = { buffer = bufnr, remap = false }
 
                 -- por algum motivo é necessário chamar desta forma para que funcione
@@ -146,7 +146,7 @@ return {
                 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
             end)
 
-            lsp.setup()
+            lsp_zero.setup()
 
             vim.diagnostic.config({ virtual_text = true })
 

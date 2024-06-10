@@ -88,5 +88,9 @@ return {
             }
         end
 
-    }
+    },
+    {
+        "github/copilot.vim",
+        cmd = "Copilot"
+    },
 }
