@@ -149,6 +149,11 @@ return {
             lsp_zero.setup()
 
             vim.diagnostic.config({ virtual_text = true })
+            vim.diagnostic.config {
+                virtual_text = {
+                    prefix = ''
+                },
+            }
 
             require('mason').setup({})
             require('mason-lspconfig').setup({
