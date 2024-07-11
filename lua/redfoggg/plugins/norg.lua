@@ -9,7 +9,7 @@ return {
         dependencies = { "luarocks.nvim" },
         lazy = false,
         version = "*",
-        build = function()
+        build = function() -- essa etapa de build desta forma só é necessária no MacOS
             local shell = require 'nvim-treesitter.shell_command_selectors'
             local install = require 'nvim-treesitter.install'
 
