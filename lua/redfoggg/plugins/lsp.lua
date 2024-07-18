@@ -128,6 +128,11 @@ return {
             lsp_zero.setup()
 
             vim.diagnostic.config({ virtual_text = true })
+            vim.diagnostic.config {
+                virtual_text = {
+                    prefix = ''
+                },
+            }
 
             local ls = require "luasnip"
             ls.config.set_config {
