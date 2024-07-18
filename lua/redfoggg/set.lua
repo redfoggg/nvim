@@ -28,6 +28,8 @@ vim.opt.list = true
 vim.opt.listchars = { tab = "»·", trail = "·", eol = "↲", space = "·"}
 vim.opt.cursorline = true
 
+vim.opt.laststatus = 3
+
 
 --vim.g.vimspector_enable_mappings = 'HUMAN'
 -- Se quiser ter uma um limite visual em sua tela para não passar o código
