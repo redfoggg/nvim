@@ -93,4 +93,16 @@ return {
         "github/copilot.vim",
         cmd = "Copilot"
     },
+    {
+        'MeanderingProgrammer/markdown.nvim',
+        main = "render-markdown",
+        opts = {},
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }
+    },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+        },
+    },
 }
