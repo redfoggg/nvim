@@ -2,6 +2,7 @@ return {
     "Hoffs/omnisharp-extended-lsp.nvim",
     {
         "VonHeikemen/lsp-zero.nvim",
+        branch = "v3.x",
         dependencies = {
             -- LSP Support
             'neovim/nvim-lspconfig',
