@@ -1,20 +1,8 @@
 return {
-    {
-        "Olical/conjure",
-        config = function()
-            vim.g["conjure#mapping#doc_word"] = false
-        end
-    },
-    "tpope/vim-sexp-mappings-for-regular-people",
     "tpope/vim-surround",
     "tpope/vim-dispatch",
     "tpope/vim-repeat",
-    "guns/vim-sexp",
     "numToStr/Comment.nvim",
-    {
-        "clojure-vim/vim-jack-in",
-        dependencies = { "radenling/vim-dispatch-neovim" },
-    },
     {
         "nvim-neotest/neotest",
         dependencies = {
@@ -39,7 +27,6 @@ return {
             })
         end
     },
-    "lukas-reineke/indent-blankline.nvim",
     {
         "catppuccin/nvim",
         name = "catppuccin",

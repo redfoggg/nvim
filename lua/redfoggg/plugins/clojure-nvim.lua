@@ -39,5 +39,22 @@ return {
                 end,
             })
         end
-    }
+    },
+    "tpope/vim-sexp-mappings-for-regular-people",
+    {
+        "guns/vim-sexp",
+        config = function()
+            local meh_key = "<M-S-C-"
+            local meh_with_leader = "<LocalLeader>" .. meh_key
+            local opts = { noremap = false }
+            vim.keymap.set({ "n", "v" }, meh_with_leader .. "k>", "<Plug>(sexp_swap_list_backward)", opts)
+            vim.keymap.set({ "n", "v" }, meh_with_leader .. "j>", "<Plug>(sexp_swap_list_forward)", opts)
+            vim.keymap.set({ "n", "v" }, meh_with_leader .. "h>", "<Plug>(sexp_swap_element_backward)", opts)
+            vim.keymap.set({ "n", "v" }, meh_with_leader .. "l>", "<Plug>(sexp_swap_element_forward)", opts)
+            vim.keymap.set({ "n", "v" }, meh_key .. "j>", "<Plug>(sexp_emit_head_element)", opts)
+            vim.keymap.set({ "n", "v" }, meh_key .. "k>", "<Plug>(sexp_emit_tail_element)", opts)
+            vim.keymap.set({ "n", "v" }, meh_key .. "h>", "<Plug>(sexp_capture_prev_element)", opts)
+            vim.keymap.set({ "n", "v" }, meh_key .. "l>", "<Plug>(sexp_capture_next_element)", opts)
+        end
+    },
 }
