@@ -1,20 +1,8 @@
 return {
-    {
-        "Olical/conjure",
-        config = function()
-            vim.g["conjure#mapping#doc_word"] = false
-        end
-    },
-    "tpope/vim-sexp-mappings-for-regular-people",
     "tpope/vim-surround",
     "tpope/vim-dispatch",
     "tpope/vim-repeat",
-    "guns/vim-sexp",
     "numToStr/Comment.nvim",
-    {
-        "clojure-vim/vim-jack-in",
-        dependencies = { "radenling/vim-dispatch-neovim" },
-    },
     {
         "nvim-neotest/neotest",
         dependencies = {
@@ -31,10 +19,13 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         config = function()
-            require('lualine').setup()
+            require('lualine').setup({
+                options = {
+                    globalstatus = true
+                }
+            })
         end
     },
-    "lukas-reineke/indent-blankline.nvim",
     {
         "catppuccin/nvim",
         name = "catppuccin",
@@ -79,16 +70,6 @@ return {
         },
     },
     {
-        "jinh0/eyeliner.nvim",
-        config = function()
-            require 'eyeliner'.setup {
-                highlight_on_key = true,
-                dim = true,
-            }
-        end
-
-    },
-    {
         "github/copilot.vim",
         cmd = "Copilot"
     },
@@ -102,6 +83,32 @@ return {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {
+        },
+    },
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = {},
+        keys = {
+            { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+            { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+            { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+            { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+            { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+        },
+    },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        opts = {},
+        keys = {
+            {
+                "<leader>?",
+                function()
+                    require("which-key").show({ global = false })
+                end,
+                desc = "Buffer Local Keymaps (which-key)",
+            },
         },
     },
     "nvim-treesitter/nvim-treesitter-context",

@@ -33,4 +33,4 @@ vim.opt.laststatus = 3
 --vim.g.vimspector_enable_mappings = 'HUMAN'
 -- Se quiser ter uma um limite visual em sua tela para não passar o código
 -- deste limite
-vim.opt.colorcolumn = "120"
+-- vim.opt.colorcolumn = "120"

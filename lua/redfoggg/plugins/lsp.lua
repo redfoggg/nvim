@@ -2,6 +2,7 @@ return {
     "Hoffs/omnisharp-extended-lsp.nvim",
     {
         "VonHeikemen/lsp-zero.nvim",
+        branch = "v3.x",
         dependencies = {
             -- LSP Support
             'neovim/nvim-lspconfig',
@@ -162,6 +163,7 @@ return {
                 handlers = {
                     function(server_name)
                         require('lspconfig')[server_name].setup({})
+                        require('lspconfig')["dartls"].setup({})
                     end,
                     ["lua_ls"] = function()
                         local lspconfig = require("lspconfig")
