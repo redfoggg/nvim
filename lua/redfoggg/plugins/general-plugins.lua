@@ -13,7 +13,6 @@ return {
         },
     },
     "mbbill/undotree",
-    "nvim-treesitter/nvim-treesitter-context",
     "theprimeagen/refactoring.nvim",
     "laytan/cloak.nvim",
     "HiPhish/rainbow-delimiters.nvim",
@@ -112,4 +111,7 @@ return {
             },
         },
     },
+    "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    "nvim-treesitter/playground",
 }

@@ -13,7 +13,6 @@ return {
             'hrsh7th/nvim-cmp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
-            'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-nvim-lua',
 
@@ -42,7 +41,6 @@ return {
             --     end
             -- })
 
-
             lsp_zero.set_server_config({
                 on_init = function(client)
                     client.server_capabilities.semanticTokensProvider = nil
@@ -55,7 +53,6 @@ return {
                 }
             }
             require('lspconfig').omnisharp.setup(dotnetConfig)
-
 
             local cmp = require('cmp')
             local cmp_select = { behavior = cmp.SelectBehavior.Insert }
@@ -97,24 +94,6 @@ return {
                 },
             })
 
-            local ls = require "luasnip"
-            ls.config.set_config {
-                history = false,
-                updateevents = "TextChanged,TextChangedI",
-            }
-            vim.keymap.set({ "i", "s" }, "<c-k>", function()
-                if ls.expand_or_jumpable() then
-                    ls.expand_or_jump()
-                end
-            end, { silent = true })
-
-            vim.keymap.set({ "i", "s" }, "<c-j>", function()
-                if ls.jumpable(-1) then
-                    ls.jump(-1)
-                end
-            end, { silent = true })
-
-
             lsp_zero.set_sign_icons({
                 error = '',
                 warn = '',
@@ -155,6 +134,23 @@ return {
                     prefix = ''
                 },
             }
+
+            local ls = require "luasnip"
+            ls.config.set_config {
+                history = false,
+                updateevents = "TextChanged,TextChangedI",
+            }
+            vim.keymap.set({ "i", "s" }, "<c-k>", function()
+                if ls.expand_or_jumpable() then
+                    ls.expand_or_jump()
+                end
+            end, { silent = true })
+
+            vim.keymap.set({ "i", "s" }, "<c-j>", function()
+                if ls.jumpable(-1) then
+                    ls.jump(-1)
+                end
+            end, { silent = true })
 
             require('mason').setup({})
             require('mason-lspconfig').setup({
