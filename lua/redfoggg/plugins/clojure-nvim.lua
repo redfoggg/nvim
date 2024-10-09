@@ -21,6 +21,7 @@ return {
             require("conjure.main").main()
             require("conjure.mapping")["on-filetype"]()
             vim.g["conjure#mapping#doc_word"] = false
+            vim.g["conjure#client#clojure#nrepl#test#current_form_names"] = { "deftest", "defflow", "defspec", "defflow-i18n", "defflow-mx", "defflow-co" }
         end,
         init = function()
             -- Print color codes if baleia.nvim is available
