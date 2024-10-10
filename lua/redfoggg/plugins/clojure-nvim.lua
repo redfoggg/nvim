@@ -43,7 +43,7 @@ return {
     },
     "tpope/vim-sexp-mappings-for-regular-people",
     {
-        "guns/vim-sexp",
+        "redfoggg/vim-sexp-fork-without-alt-binds",
         config = function()
             local meh_key = "<M-S-C-"
             local meh_with_leader = "<LocalLeader>" .. meh_key
