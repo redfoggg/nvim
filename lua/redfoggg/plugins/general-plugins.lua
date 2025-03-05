@@ -35,6 +35,7 @@ return {
             vim.cmd('highlight SignColumn guibg=NONE') -- desativa background na barra de ícones
         end
     },
+    { "folke/tokyonight.nvim" },
     {
         "lewis6991/gitsigns.nvim",
         config = function()
@@ -71,7 +72,10 @@ return {
     },
     {
         "github/copilot.vim",
-        cmd = "Copilot"
+        cmd = "Copilot",
+        keys = {
+            {"<leader>ct", "<cmd>lua ToggleCopilot()<cr>", desc = "Toggle Copilot"}
+        }
     },
     {
         'MeanderingProgrammer/markdown.nvim',

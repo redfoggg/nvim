@@ -29,21 +29,11 @@ vim.keymap.set("t", "<A-k>", "<C-\\><C-n><C-w>k")
 vim.keymap.set("t", "<A-h>", "<C-\\><C-n><C-w>h")
 vim.keymap.set("t", "<A-l>", "<C-\\><C-n><C-w>l")
 
-vim.keymap.set("n", "<A-j>", "<C-\\><C-n><C-w>j")
-vim.keymap.set("n", "<A-k>", "<C-\\><C-n><C-w>k")
-vim.keymap.set("n", "<A-h>", "<C-\\><C-n><C-w>h")
-vim.keymap.set("n", "<A-l>", "<C-\\><C-n><C-w>l")
-
 -- reordenar buffers com alt-shift-direção
 vim.keymap.set("t", "<A-S-j>", "<C-\\><C-n><C-w>J")
 vim.keymap.set("t", "<A-S-k>", "<C-\\><C-n><C-w>K")
 vim.keymap.set("t", "<A-S-h>", "<C-\\><C-n><C-w>H")
 vim.keymap.set("t", "<A-S-l>", "<C-\\><C-n><C-w>L")
-
-vim.keymap.set("n", "<A-S-j>", "<C-\\><C-n><C-w>J")
-vim.keymap.set("n", "<A-S-k>", "<C-\\><C-n><C-w>K")
-vim.keymap.set("n", "<A-S-h>", "<C-\\><C-n><C-w>H")
-vim.keymap.set("n", "<A-S-l>", "<C-\\><C-n><C-w>L")
 
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")

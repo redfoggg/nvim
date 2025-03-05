@@ -152,6 +152,7 @@ return {
                 end
             end, { silent = true })
 
+            require('lspconfig')["dartls"].setup({})
             require('mason').setup({})
             require('mason-lspconfig').setup({
                 ensure_installed = {
@@ -163,7 +164,6 @@ return {
                 handlers = {
                     function(server_name)
                         require('lspconfig')[server_name].setup({})
-                        require('lspconfig')["dartls"].setup({})
                     end,
                     ["lua_ls"] = function()
                         local lspconfig = require("lspconfig")
