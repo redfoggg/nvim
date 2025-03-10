@@ -20,7 +20,7 @@ return {
     },
     {
       "gR",
-      "<cmd>Trouble lsp toggle focus=false<cr>",
+      "<cmd>Trouble lsp toggle focus=true<cr>",
       desc = "LSP Definitions / references / ... (Trouble)",
     },
     {
