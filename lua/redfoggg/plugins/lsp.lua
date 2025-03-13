@@ -94,13 +94,6 @@ return {
                 },
             })
 
-            -- lsp_zero.set_sign_icons({
-            --     error = '',
-            --     warn = '',
-            --     hint = '',
-            --     info = ''
-            -- })
-
             vim.diagnostic.config({
                 signs = {
                     text = {

@@ -10,7 +10,7 @@
   "cmp-nvim-lua": { "branch": "main", "commit": "f12408bdb54c39c23e67cab726264c10db33ada8" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
-  "conjure": { "branch": "master", "commit": "8aed42faf4cb44663d06883d9733c89180260daa" },
+  "conjure": { "branch": "main", "commit": "c5f427c33786a024c58d7105e2244f5f14c64fea" },
   "copilot.vim": { "branch": "release", "commit": "cd7f01009fb7b30e22840cadc4faad88b05c6eef" },
   "elixir-tools.nvim": { "branch": "main", "commit": "f7e18753f5587b422aac628249fa46c66ed24af3" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
