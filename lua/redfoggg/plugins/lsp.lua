@@ -168,6 +168,9 @@ return {
                 handlers = {
                     function(server_name)
                         require('lspconfig')[server_name].setup({})
+                        require('lspconfig')['hls'].setup {
+                            filetypes = { 'haskell', 'lhaskell', 'cabal' },
+                        }
                     end,
                     ["lua_ls"] = function()
                         local lspconfig = require("lspconfig")
