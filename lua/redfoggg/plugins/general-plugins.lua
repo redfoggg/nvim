@@ -13,7 +13,6 @@ return {
         },
     },
     "mbbill/undotree",
-    "theprimeagen/refactoring.nvim",
     "laytan/cloak.nvim",
     "HiPhish/rainbow-delimiters.nvim",
     {
@@ -78,15 +77,46 @@ return {
         }
     },
     {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+        ft = { "markdown", "codecompanion" },
+        opts = {
+            render_modes = true,
+            sign = {
+                enabled = false
+            },
+        },
+    },
+    {
         "olimorris/codecompanion.nvim",
         config = true,
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
+        keys = {
+            { "<leader>cc", "<cmd>CodeCompanionChat toggle<cr>", desc = "Toggle CodeCompanionChat" },
+            { "<leader>cp", "<cmd>CodeCompanionChat<cr>",        desc = "Open CodeCompanionChat" }
+        },
         opts = {
             strategies = {
-                chat = { adapter = "copilot" },
+                chat = {
+                    adapter = "copilot",
+                    slash_commands = {
+                        ["buffer"] = {
+                            opts = {
+                                provider = "telescope",
+                                contains_code = true
+                            }
+                        },
+                        ["file"] = {
+                            opts = {
+                                provider = "telescope",
+                                contains_code = true
+                            }
+                        }
+                    }
+                },
                 inline = { adapter = "copilot" },
             },
             adapters = {
@@ -101,12 +131,6 @@ return {
                 end,
             }
         }
-    },
-    {
-        'MeanderingProgrammer/markdown.nvim',
-        main = "render-markdown",
-        opts = {},
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }
     },
     {
         "folke/todo-comments.nvim",
