@@ -94,4 +94,21 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/nvim-treesitter-textobjects",
     "nvim-treesitter/playground",
+    {
+        "junegunn/vim-easy-align",
+        keys = {
+            { "={", "vi{<C-v>$:EasyAlign\\ g/^\\S/<CR>" },
+            { "=[", "vi[<C-v>$:EasyAlign\\ g/^\\S/<CR>" },
+            { "=(", "vi(<C-v>$:EasyAlign\\ g/^\\S/<CR>" },
+        },
+    },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
 }
