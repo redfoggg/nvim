@@ -7,24 +7,13 @@ return {
             'williamboman/mason.nvim',
             'williamboman/mason-lspconfig.nvim',
 
-            -- Autocompletion
-            'hrsh7th/nvim-cmp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-nvim-lua',
 
             -- Snippets
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
             "saadparwaiz1/cmp_luasnip",
-
-            -- Só para ícones mesmo
-            "onsails/lspkind.nvim",
         },
         config = function()
-            local lspkind = require("lspkind")
-
             local dotnetConfig = {
                 handlers = {
                     ["textDocument/definition"] = require('omnisharp_extended').handler
@@ -32,45 +21,21 @@ return {
             }
             require('lspconfig').omnisharp.setup(dotnetConfig)
 
-            local cmp = require('cmp')
-            local cmp_select = { behavior = cmp.SelectBehavior.Insert }
-            local cmp_mappings = {
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping(
-                    cmp.mapping.confirm {
-                        select = true,
-                        behavior = cmp.ConfirmBehavior.Insert
-                    },
-                    { "i", "c" }),
-                ["<C-Space>"] = cmp.mapping.complete(),
-            }
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-            -- TODO: essa parte precisa ser removida para
-            -- reorganizar o completion fora do local onde
-            -- é organizado o lsp como está aqui tudo misturado
-            cmp_mappings['<Tab>'] = nil
-            cmp_mappings['<S-Tab>'] = nil
+            capabilities = vim.tbl_deep_extend('force', capabilities,
+                require('blink.cmp').get_lsp_capabilities({}, false))
 
-            cmp.setup({
-                mapping = cmp_mappings,
-                sources = cmp.config.sources({
-                        { name = "nvim_lsp" },
-                        { name = "luasnip" }
-                    },
-                    {
-                        { name = "buffer" }
+            capabilities = vim.tbl_deep_extend('force', capabilities, {
+                textDocument = {
+                    foldingRange = {
+                        dynamicRegistration = false,
+                        lineFoldingOnly = true
                     }
-                ),
-                formatting = {
-                    format = lspkind.cmp_format({
-                        mode = 'symbol',
-                        maxwidth = 50,
-                        ellipsis_char = '...',
-                        show_labelDetails = true,
-                    })
-                },
+                }
             })
+
+            capabilities.textDocument.semanticTokens = nil
 
             vim.diagnostic.config({
                 signs = {
@@ -91,21 +56,21 @@ return {
                 local opts = { buffer = bufnr, remap = false }
 
                 if client.name == "omnisharp" then
-                    vim.keymap.set("n", "gd", function() require('omnisharp_extended').lsp_definitions() end, opts)
+                    vim.keymap.set("n", "gd", require('omnisharp_extended').lsp_definitions, opts)
                 else
-                    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+                    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
                 end
 
-                vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end, opts)
-                vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
-                vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-                vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-                vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-                vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-                vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-                vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
-                vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
-                vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+                vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+                vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
+                vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+                vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
+                vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+                vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+                vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
             end
 
             local ls = require "luasnip"
@@ -136,17 +101,20 @@ return {
                 handlers = {
                     function(server_name)
                         require('lspconfig')[server_name].setup({
-                            on_attach = on_attach
+                            on_attach = on_attach,
+                            capabilities = capabilities
                         })
                         require('lspconfig')['hls'].setup {
                             on_attach = on_attach,
                             filetypes = { 'haskell', 'lhaskell', 'cabal' },
+                            capabilities = capabilities
                         }
                     end,
                     ["lua_ls"] = function()
                         local lspconfig = require("lspconfig")
                         lspconfig.lua_ls.setup {
                             on_attach = on_attach,
+                            capabilities = capabilities,
                             settings = {
                                 Lua = {
                                     runtime = { version = "Lua 5.1" },
