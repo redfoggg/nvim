@@ -26,6 +26,9 @@ return {
         end
     },
     {
+        "olimorris/onedarkpro.nvim"
+    },
+    {
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000,
@@ -68,69 +71,6 @@ return {
         keys = {
             { "<leader>pv", "<cmd>lua MiniFiles.open()<cr>", desc = "MiniFiles open tab buffer" }
         },
-    },
-    {
-        "github/copilot.vim",
-        cmd = "Copilot",
-        keys = {
-            { "<leader>ct", "<cmd>lua ToggleCopilot()<cr>", desc = "Toggle Copilot" }
-        }
-    },
-    {
-        'MeanderingProgrammer/render-markdown.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
-        ft = { "markdown", "codecompanion" },
-        opts = {
-            render_modes = true,
-            sign = {
-                enabled = false
-            },
-        },
-    },
-    {
-        "olimorris/codecompanion.nvim",
-        config = true,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        keys = {
-            { "<leader>cc", "<cmd>CodeCompanionChat toggle<cr>", desc = "Toggle CodeCompanionChat" },
-            { "<leader>cp", "<cmd>CodeCompanionChat<cr>",        desc = "Open CodeCompanionChat" }
-        },
-        opts = {
-            strategies = {
-                chat = {
-                    adapter = "copilot",
-                    slash_commands = {
-                        ["buffer"] = {
-                            opts = {
-                                provider = "telescope",
-                                contains_code = true
-                            }
-                        },
-                        ["file"] = {
-                            opts = {
-                                provider = "telescope",
-                                contains_code = true
-                            }
-                        }
-                    }
-                },
-                inline = { adapter = "copilot" },
-            },
-            adapters = {
-                copilot = function()
-                    return require("codecompanion.adapters").extend("copilot", {
-                        schema = {
-                            model = {
-                                default = "claude-3.5-sonnet",
-                            },
-                        },
-                    })
-                end,
-            }
-        }
     },
     {
         "folke/todo-comments.nvim",
