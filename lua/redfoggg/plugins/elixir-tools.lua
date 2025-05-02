@@ -1,11 +1,11 @@
+local elixir = require("elixir")
+local elixirls = require("elixir.elixirls")
+
 return {
     "elixir-tools/elixir-tools.nvim",
     version = "*",
     event = { "BufReadPre *.ex", "BufNewFile *.ex" },
     config = function()
-        local elixir = require("elixir")
-        local elixirls = require("elixir.elixirls")
-
         elixir.setup {
             nextls = { enable = false },
             credo = {},
