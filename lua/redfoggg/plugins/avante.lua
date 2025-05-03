@@ -26,7 +26,7 @@ return {
             provider = "ollama",
             --provider = "copilot",
             ollama = {
-                model = "qwen3:8b"
+                model = "codellama:7b"
             },
         },
         build = "make",
