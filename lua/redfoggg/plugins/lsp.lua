@@ -4,9 +4,8 @@ return {
         'neovim/nvim-lspconfig',
         dependencies = {
             -- LSP Support
-            'williamboman/mason.nvim',
-            'williamboman/mason-lspconfig.nvim',
-
+            'mason-org/mason.nvim',
+            'mason-org/mason-lspconfig.nvim',
 
             -- Snippets
             'L3MON4D3/LuaSnip',
@@ -90,43 +89,26 @@ return {
                 end
             end, { silent = true })
 
-            require('mason').setup({})
-            require('mason-lspconfig').setup({
-                ensure_installed = {
-                    'rust_analyzer',
-                    'omnisharp',
-                    'clojure_lsp',
-                    'lua_ls'
-                },
-                handlers = {
-                    function(server_name)
-                        require('lspconfig')[server_name].setup({
-                            on_attach = on_attach,
-                            capabilities = capabilities
-                        })
-                        require('lspconfig')['hls'].setup {
-                            on_attach = on_attach,
-                            filetypes = { 'haskell', 'lhaskell', 'cabal' },
-                            capabilities = capabilities
-                        }
-                    end,
-                    ["lua_ls"] = function()
-                        local lspconfig = require("lspconfig")
-                        lspconfig.lua_ls.setup {
-                            on_attach = on_attach,
-                            capabilities = capabilities,
-                            settings = {
-                                Lua = {
-                                    runtime = { version = "Lua 5.1" },
-                                    diagnostics = {
-                                        globals = { "vim", "it", "describe", "before_each", "after_each" },
-                                    }
-                                }
-                            }
-                        }
-                    end,
-                },
+            vim.lsp.config("*", {
+                on_attach = on_attach,
+                capabilities = capabilities,
             })
+
+            vim.lsp.config("lua_ls", {
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        runtime = { version = "Lua 5.1" },
+                        diagnostics = {
+                            globals = { "vim", "it", "describe", "before_each", "after_each" },
+                        }
+                    }
+                }
+            })
+
+            require('mason').setup({})
+            require("mason-lspconfig").setup() -- basicamente para garantir que o vim.lsp.enable({'clang', 'lua_ls'}) etc, rode para todos lsp's instalados
         end,
     },
 }

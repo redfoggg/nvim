@@ -3,7 +3,6 @@ return {
     dependencies = {
         'rafamadriz/friendly-snippets',
         'Kaiser-Yang/blink-cmp-avante'
-
     },
     version = '1.*',
 

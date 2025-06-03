@@ -14,7 +14,7 @@ return {
                 filetypes = {
                     markdown = true,
                     help = true,
-                }
+                },
             })
         end
     },
@@ -23,11 +23,14 @@ return {
         event = "VeryLazy",
         version = false,
         opts = {
-            provider = "ollama",
-            --provider = "copilot",
-            ollama = {
-                model = "codellama:7b"
-            },
+            -- provider = "ollama",
+            provider = "copilot",
+            -- ollama = {
+            --     model = "codellama:7b"
+            -- },
+            copilot = {
+                model = "claude-3.7-sonnet"
+            }
         },
         build = "make",
         dependencies = {

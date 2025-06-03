@@ -19,7 +19,7 @@ return {
       desc = "Symbols (Trouble)",
     },
     {
-      "gR",
+      "grr",
       "<cmd>Trouble lsp toggle focus=true<cr>",
       desc = "LSP Definitions / references / ... (Trouble)",
     },
