@@ -23,14 +23,16 @@ return {
         event = "VeryLazy",
         version = false,
         opts = {
-            -- provider = "ollama",
+
+            providers = {
+                copilot = {
+                    model = "claude-sonnet-4"
+                },
+                ollama = {
+                    model = "codellama:7b"
+                },
+            },
             provider = "copilot",
-            -- ollama = {
-            --     model = "codellama:7b"
-            -- },
-            copilot = {
-                model = "claude-3.7-sonnet"
-            }
         },
         build = "make",
         dependencies = {
@@ -39,11 +41,9 @@ return {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
             --- The below dependencies are optional,
-            "echasnovski/mini.pick",     -- for file_selector provider mini.pick
             "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-            "hrsh7th/nvim-cmp",          -- autocompletion for avante commands and mentions
-            "ibhagwan/fzf-lua",          -- for file_selector provider fzf
-            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+            "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
             {
                 -- support for image pasting
                 "HakonHarnes/img-clip.nvim",
