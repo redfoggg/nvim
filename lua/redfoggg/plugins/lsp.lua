@@ -1,4 +1,8 @@
 return {
+    {
+        "seblyng/roslyn.nvim",
+        ft = "cs"
+    },
     "Hoffs/omnisharp-extended-lsp.nvim",
     {
         'neovim/nvim-lspconfig',
@@ -13,13 +17,6 @@ return {
             "saadparwaiz1/cmp_luasnip",
         },
         config = function()
-            local dotnetConfig = {
-                handlers = {
-                    ["textDocument/definition"] = require('omnisharp_extended').handler
-                }
-            }
-            require('lspconfig').omnisharp.setup(dotnetConfig)
-
             local capabilities = vim.lsp.protocol.make_client_capabilities()
 
             capabilities = vim.tbl_deep_extend('force', capabilities,
@@ -34,7 +31,7 @@ return {
                 }
             })
 
-            capabilities.textDocument.semanticTokens = nil
+            --capabilities.textDocument.semanticTokens = nil
 
             vim.diagnostic.config({
                 signs = {
@@ -107,7 +104,26 @@ return {
                 }
             })
 
-            require('mason').setup({})
+            vim.lsp.config("roslyn", {
+                on_attach = on_attach,
+                capabilities = capabilities,
+                settings = {
+                    ["csharp|inlay_hints"] = {
+                        csharp_enable_inlay_hints_for_implicit_object_creation = true,
+                        csharp_enable_inlay_hints_for_implicit_variable_types = true,
+                    },
+                    ["csharp|code_lens"] = {
+                        dotnet_enable_references_code_lens = true,
+                    },
+                },
+            })
+
+            require('mason').setup({
+                registries = {
+                    "github:mason-org/mason-registry",
+                    "github:Crashdummyy/mason-registry",
+                },
+            })
             require("mason-lspconfig").setup() -- basicamente para garantir que o vim.lsp.enable({'clang', 'lua_ls'}) etc, rode para todos lsp's instalados
         end,
     },

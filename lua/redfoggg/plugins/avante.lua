@@ -23,33 +23,45 @@ return {
         event = "VeryLazy",
         version = false,
         opts = {
-
             providers = {
                 copilot = {
-                    model = "claude-sonnet-4"
+                    model = "claude-opus-4"
                 },
                 ollama = {
                     model = "codellama:7b"
                 },
             },
             provider = "copilot",
+            windows = {
+                width = 40,
+            },
         },
+        config = function()
+            require("avante").setup({
+                system_prompt = function()
+                    local hub = require("mcphub").get_hub_instance()
+                    return hub and hub:get_active_servers_prompt() or ""
+                end,
+                custom_tools = function()
+                    return {
+                        require("mcphub.extensions.avante").mcp_tool(),
+                    }
+                end,
+            })
+        end,
         build = "make",
         dependencies = {
             "nvim-treesitter/nvim-treesitter",
             "stevearc/dressing.nvim",
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            --- The below dependencies are optional,
-            "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-            "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
-            "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+            "nvim-telescope/telescope.nvim",
+            "hrsh7th/nvim-cmp",
+            "nvim-tree/nvim-web-devicons",
             {
-                -- support for image pasting
                 "HakonHarnes/img-clip.nvim",
                 event = "VeryLazy",
                 opts = {
-                    -- recommended settings
                     default = {
                         embed_image_as_base64 = false,
                         prompt_for_file_name = false,

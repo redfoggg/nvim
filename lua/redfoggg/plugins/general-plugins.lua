@@ -2,6 +2,13 @@ return {
     "tpope/vim-surround",
     "tpope/vim-dispatch",
     "tpope/vim-repeat",
+    {
+        "3rd/image.nvim",
+        build = false,
+        opts = {
+            processor = "magick_cli",
+        }
+    },
     "numToStr/Comment.nvim",
     {
         "nvim-neotest/neotest",
@@ -114,5 +121,8 @@ return {
             vim.g.mkdp_filetypes = { "markdown" }
         end,
         ft = { "markdown" },
+        keys = {
+            { "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = "Markdown Preview" }
+        }
     },
 }
