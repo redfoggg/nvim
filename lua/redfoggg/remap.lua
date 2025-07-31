@@ -23,13 +23,13 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
--- navegar buffers com alt-direção
+-- navegar buffers com alt-direção, somente terminal mode
 vim.keymap.set("t", "<A-j>", "<C-\\><C-n><C-w>j")
 vim.keymap.set("t", "<A-k>", "<C-\\><C-n><C-w>k")
 vim.keymap.set("t", "<A-h>", "<C-\\><C-n><C-w>h")
 vim.keymap.set("t", "<A-l>", "<C-\\><C-n><C-w>l")
 
--- reordenar buffers com alt-shift-direção
+-- reordenar buffers com alt-shift-direção, somente terminal mode
 vim.keymap.set("t", "<A-S-j>", "<C-\\><C-n><C-w>J")
 vim.keymap.set("t", "<A-S-k>", "<C-\\><C-n><C-w>K")
 vim.keymap.set("t", "<A-S-h>", "<C-\\><C-n><C-w>H")
