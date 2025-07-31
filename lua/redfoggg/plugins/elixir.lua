@@ -14,7 +14,7 @@ return {
                     dialyzerEnabled = false,
                     enableTestLenses = false,
                 },
-                on_attach = function(client, bufnr)
+                on_attach = function(_, _)
                     vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })
                     vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
                     vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
