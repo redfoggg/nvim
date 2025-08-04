@@ -27,10 +27,10 @@ return {
         }
     end,
     keys = {
-        { "<C-p>",       function() require('telescope.builtin').find_files() end },
-        { "<leader>pf",  function() require('telescope.builtin').git_files() end },
-        { "<leader>ps",  function() require('telescope.builtin').live_grep() end, },
-        { "<leader>vh",  function() require('telescope.builtin').help_tags() end },
-        { "<leader>kmh", function() require('telescope.builtin').keymaps() end },
+        { "<leader>ff",  function() require('telescope.builtin').find_files() end, desc = "Find files" },
+        { "<leader>pf",  function() require('telescope.builtin').git_files() end,  desc = "Find git files" },
+        { "<leader>ps",  function() require('telescope.builtin').live_grep() end,  desc = "Live grep" },
+        { "<leader>vh",  function() require('telescope.builtin').help_tags() end,  desc = "Help tags" },
+        { "<leader>kmh", function() require('telescope.builtin').keymaps() end,    desc = "Keymaps" },
     },
 }
