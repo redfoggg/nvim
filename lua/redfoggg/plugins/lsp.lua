@@ -47,16 +47,16 @@ return {
                 },
             })
 
+
             local on_attach = function(client, bufnr)
                 --client.server_capabilities.semanticTokensProvider = nil
                 local opts = { buffer = bufnr, remap = false }
 
-                if client.server_capabilities.inlayHintProvider then
-                    vim.lsp.inlay_hint.enable(bufnr, true)
-                end
+                vim.lsp.inlay_hint.enable(true)
 
                 if client.name == "omnisharp" then
-                    vim.keymap.set("n", "gd", require('omnisharp_extended').lsp_definitions, opts, { desc = "Go to definition" })
+                    vim.keymap.set("n", "gd", require('omnisharp_extended').lsp_definitions, opts,
+                        { desc = "Go to definition" })
                 else
                     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts, { desc = "Go to definition" })
                 end
@@ -64,7 +64,8 @@ return {
                 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts, { desc = "Go to declaration" })
                 vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts, { desc = "Go to implementation" })
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts, { desc = "Show hover information" })
-                vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts, { desc = "Search workspace symbols" })
+                vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts,
+                    { desc = "Search workspace symbols" })
                 vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts, { desc = "Open diagnostics in float" })
                 vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts, { desc = "Go to next diagnostic" })
                 vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts, { desc = "Go to previous diagnostic" })
