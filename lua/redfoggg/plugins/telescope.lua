@@ -32,7 +32,7 @@ return {
         { "<leader>sh",  function() builtin.help_tags() end,   desc = "[S]earch [H]elp" },
         { "<leader>sk",  function() builtin.keymaps() end,     desc = "[S]earch [K]eymaps" },
         { "<leader>sf",  function() builtin.find_files() end,  desc = "[S]earch [F]iles" },
-        { "<leader>sgf", function() builtin.git_files() end,   desc = "[S]earch [G]it [F]iles" },
+        { "<leader>sp", function() builtin.git_files() end,   desc = "[S]earch [P]roject(Git) [F]iles" },
         { "<leader>ss",  function() builtin.builtin() end,     desc = "[S]earch [S]elect Telescope" },
         { "<leader>sw",  function() builtin.grep_string() end, desc = "[S]earch current [W]ord" },
         { "<leader>sg",  function() builtin.live_grep() end,   desc = "[S]earch by [G]rep" },

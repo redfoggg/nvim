@@ -1,6 +1,7 @@
 return {
     "olimorris/onedarkpro.nvim",
     "folke/tokyonight.nvim",
+    "rebelot/kanagawa.nvim",
     {
         "catppuccin/nvim",
         name = "catppuccin",
