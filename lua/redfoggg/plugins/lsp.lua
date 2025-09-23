@@ -3,7 +3,6 @@ return {
         "seblyng/roslyn.nvim",
         ft = "cs"
     },
-    "Hoffs/omnisharp-extended-lsp.nvim",
     {
         'neovim/nvim-lspconfig',
         dependencies = {
@@ -14,7 +13,6 @@ return {
             -- Snippets
             'L3MON4D3/LuaSnip',
             'rafamadriz/friendly-snippets',
-            "saadparwaiz1/cmp_luasnip",
         },
         config = function()
             local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -111,6 +109,7 @@ return {
                     },
                 },
             })
+            vim.lsp.enable('roslyn') -- é preciso botar esse já que o Mason não tem suporte a este lsp
 
             require('mason').setup({
                 registries = {

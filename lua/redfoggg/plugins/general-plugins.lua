@@ -113,8 +113,8 @@ return {
         },
     },
     "nvim-treesitter/nvim-treesitter-context",
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    "nvim-treesitter/playground",
+    -- "nvim-treesitter/nvim-treesitter-textobjects",
+    -- "nvim-treesitter/playground",
     {
         "junegunn/vim-easy-align",
         keys = {

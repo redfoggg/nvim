@@ -2,7 +2,6 @@ return {
     'saghen/blink.cmp',
     dependencies = {
         'rafamadriz/friendly-snippets',
-        'Kaiser-Yang/blink-cmp-avante'
     },
     version = '1.*',
 
@@ -33,12 +32,8 @@ return {
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { 'lsp', 'path', 'snippets', 'buffer', 'avante' },
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
             providers = {
-                avante = {
-                    module = 'blink-cmp-avante',
-                    name = 'Avante',
-                }
             },
         },
 
