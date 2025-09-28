@@ -22,7 +22,10 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<leader>rw", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Replace word under cursor" })
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", {
+    silent = true,
+    desc = "Make file executable"
+})
 
 -- navegar buffers com alt-direção, somente terminal mode
 vim.keymap.set("t", "<A-j>", "<C-\\><C-n><C-w>j")
