@@ -29,8 +29,6 @@ return {
                 }
             })
 
-            --capabilities.textDocument.semanticTokens = nil
-
             vim.diagnostic.config({
                 signs = {
                     text = {
@@ -47,7 +45,6 @@ return {
 
 
             local on_attach = function(client, bufnr)
-                --client.server_capabilities.semanticTokensProvider = nil
                 local opts = { buffer = bufnr, remap = false }
 
                 vim.lsp.inlay_hint.enable(true)
