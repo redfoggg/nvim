@@ -42,3 +42,6 @@ vim.keymap.set("t", "<A-S-l>", "<C-\\><C-n><C-w>L")
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+vim.keymap.set("n", "<leader>yfp", "<cmd>let @+ = expand('%:p')<cr>", { desc = "(Y)ank (f)ull (p)ath", silent = true })
+
